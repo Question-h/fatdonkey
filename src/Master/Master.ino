@@ -80,6 +80,13 @@ void setup() {
     Serial.println("Failed to add peer");
     return;
   }
+  pinMode(IO6 , INPUT);
+  pinMode(IO7, INPUT); 
+  pinMode(IO8 , INPUT);
+  pinMode(IO9 , INPUT); 
+  pinMode(IO10 , INPUT);
+  pinMode(IO20 , INPUT);
+  pinMode(IO21 , INPUT);
 }
 
 void loop() {
