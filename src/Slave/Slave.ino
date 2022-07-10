@@ -5,8 +5,8 @@
   #error This code is intended to run on the ESP32_C3 platform! Please check your Tools->Board setting.
 #endif
 
-#define TIMER_INTERRUPT_DEBUG       1
-#define ISR_SERVO_DEBUG             1
+#define TIMER_INTERRUPT_DEBUG       -1
+#define ISR_SERVO_DEBUG             -1
 
 // Select different ESP32 timer number (0-1) to avoid conflict
 #define USE_ESP32_TIMER_NO          1
@@ -83,40 +83,56 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   digitalWrite(IO10,myData.io10);
   digitalWrite(IO20,myData.io20);
   digitalWrite(IO21,myData.io21);
+
+  //Serial.print("len: ");
+  //Serial.println(len);
+  //Serial.print("sizeof(myData)");
+  //Serial.println(sizeof(myData));
   
   Serial.print("ADC0: ");
-  Serial.println(myData.adc0);
+  Serial.print(myData.adc0);
+  Serial.print(",");
   Serial.print("ADC1: ");
-  Serial.println(myData.adc1);
+  Serial.print(myData.adc1);
+  Serial.print(",");
   Serial.print("ADC2: ");
-  Serial.println(myData.adc2);
+  Serial.print(myData.adc2);
+  Serial.print(",");
   Serial.print("ADC3: ");
-  Serial.println(myData.adc3);
+  Serial.print(myData.adc3);
+  Serial.print(",");
   Serial.print("ADC4: ");
-  Serial.println(myData.adc4);
+  Serial.print(myData.adc4);
+  Serial.print(",");
   Serial.print("ADC5: ");
-  Serial.println(myData.adc5);
-
-  Serial.print("IO6: ");
-  Serial.println(myData.io6);
-  Serial.print("IO7: ");
-  Serial.println(myData.io7);
-  Serial.print("IO8: ");
-  Serial.println(myData.io8);
-  Serial.print("IO9: ");
-  Serial.println(myData.io9);
-  Serial.print("IO10: ");
-  Serial.println(myData.io10);
-  Serial.print("IO20: ");
-  Serial.println(myData.io20);
-  Serial.print("IO21: ");
-  Serial.println(myData.io21);
+  Serial.print(myData.adc5);
+  Serial.print(",");
   
+  Serial.print("IO6: ");
+  Serial.print(myData.io6);
+  Serial.print(",");
+  Serial.print("IO7: ");
+  Serial.print(myData.io7);
+  Serial.print(",");
+  Serial.print("IO8: ");
+  Serial.print(myData.io8);
+  Serial.print(",");
+  Serial.print("IO9: ");
+  Serial.print(myData.io9);
+  Serial.print(",");
+  Serial.print("IO10: ");
+  Serial.print(myData.io10);
+  Serial.print(",");
+  Serial.print("IO20: ");
+  Serial.print(myData.io20);
+  Serial.print(",");
+  Serial.print("IO21: ");
+  Serial.print(myData.io21);
   Serial.println();
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // 初始化 ESP-NOW
   WiFi.mode(WIFI_STA);
@@ -124,7 +140,7 @@ void setup() {
     Serial.println("Error initializing ESP-NOW");
     return;
   }
-
+    Serial.print("STA MAC: "); Serial.println(WiFi.macAddress());
   // 设置接收数据回调函数
   esp_now_register_recv_cb(OnDataRecv);
 
@@ -150,7 +166,7 @@ void setup() {
 }
 
 void loop() {
-
+    
   //ESP32_ISR_Servos.setPosition(servoIndex1, position);
   //setPulseWidth(servoIndex1, uint16_t& pulseWidth);
 }
