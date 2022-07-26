@@ -69,6 +69,7 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   //Serial.print("board_name: ");
   //Serial.println(myData.board_name);
   int pulseWidth=0;
+  
   pulseWidth=map(myData.adc0,0,4095,MIN_MICROS,MAX_MICROS);
   ESP32_ISR_Servos.setPulseWidth(servoIndex0, pulseWidth);
   pulseWidth=map(myData.adc1,0,4095,MIN_MICROS,MAX_MICROS);
@@ -83,6 +84,7 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   ESP32_ISR_Servos.setPulseWidth(servoIndex5, pulseWidth);
  
   digitalWrite(IO6,myData.io6);
+  
   digitalWrite(IO7,myData.io7);
   digitalWrite(IO8,myData.io8);
   digitalWrite(IO9,myData.io9);

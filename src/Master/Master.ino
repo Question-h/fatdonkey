@@ -97,6 +97,7 @@ void setup() {
 void loop() {
   // 设置要发送的数据
   //myData.board_name = "Fat Donkey";
+  
   myData.adc0 = analogRead(ADC0);
   
   myData.adc1 = analogRead(ADC1);
@@ -104,7 +105,6 @@ void loop() {
   myData.adc3 = analogRead(ADC3);
   myData.adc4 = analogRead(ADC4);
   myData.adc5 = analogRead(ADC5);
-  
   myData.io6 = digitalRead(IO6);
   myData.io7 = digitalRead(IO7);
   myData.io8 = digitalRead(IO8);
@@ -112,6 +112,7 @@ void loop() {
   myData.io10 = digitalRead(IO10);
   myData.io20 = digitalRead(IO20);
   myData.io21 = digitalRead(IO21);
+  
   /*
   Serial.print(myData.adc0);
   Serial.print(",");
@@ -159,5 +160,5 @@ void loop() {
     //Serial.println("Error sending the data");
   }
 
-  delay(100);
+  //delay(100);
 }
